@@ -1,0 +1,21 @@
+/* nav {
+  background: rgba(0, 0, 0, 0.5)
+} */
+
+.createInternBtn {
+  background: var(--color-primary);
+  border: none;
+  color: white;
+  padding: 3px 40px 3px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.createInternBtn:hover {
+  transition: var(--transition);
+  color: black;
+}

@@ -1,0 +1,61 @@
+.landingPage {
+    background-image: url(../../assests/images/Banyan-Fist-Graphic-01.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#tracker {
+    color: bisque;
+    font-size: 54px;
+    padding-top: 6%;
+    margin-left: 5%;
+}
+
+#signin {
+    margin-left: 7%;
+    color: bisque;
+    font-size: 42px;
+}
+
+#email {
+    color: bisque;
+}
+
+#landing-Page {
+    margin-left: 65%;
+    width: 75%;
+margin-top: -5%;
+
+}
+
+#reg-email {
+    width: 30%;
+    text-align: left;
+    font-size: 32px;
+}
+
+#reg-pass {
+    width: 30%;
+    text-align: left;
+    font-size: 32px;
+}
+
+#con-pass {
+    width: 30%;
+    text-align: left;
+    font-size: 32px;
+}
+
+#submit {
+
+    margin-top: 1.5%;
+    background-color: aquamarine;
+    width: 10%;
+}
+
+#newUser {
+    color: bisque;
+    padding-top: 1.3%;
+}

@@ -1,11 +1,13 @@
 import React from "react";
 import Logo from "../../assets/cropped-BL_LOGO-201x26.png";
 import "./Nav.css";
-import { BiLogOut } from "react-icons/bi";
+import Modal from "../Modal/Modal";
+import Logout from "../Logout/Logout";
 
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+      <Modal />
       <div className="container-fluid">
         <div className="navbar-brand">
           <img src={Logo} alt="banyan labs" className="img-fluid m-2" />
@@ -24,7 +26,13 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav ms-auto mt-2">
             <li className="nav-item mb-2">
-              <button className="createInternBtn">Create Intern</button>
+              <button
+                className="createInternBtn"
+                data-bs-toggle="modal"
+                data-bs-target="#myModal"
+              >
+                Create User
+              </button>
             </li>
             <li className="nav-item ms-3">
               <div className="dropdown">
@@ -61,8 +69,8 @@ const Nav = () => {
                   </li>
                   <li>
                     <span className="dropdown-item bg-danger-soft-hover">
-                      <BiLogOut className="m-2" />
-                      Sign Out
+                      {/* <BiLogOut className="m-2" /> */}
+                      <Logout />
                     </span>
                   </li>
                 </ul>

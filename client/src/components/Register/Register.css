@@ -1,0 +1,61 @@
+#register-div {
+    background-image: url('../../Assests/Banyan-Fist-Graphic-01.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#registerForm {
+    margin-left: 55%;
+    padding-top: -3%;
+    font-size: 26px;
+
+}
+
+#reg-here {
+    color: whitesmoke;
+    margin-left: 15%;
+}
+
+#first-name {
+    width: 60%;
+    margin-bottom: 1%;
+}
+
+#last-name {
+    margin-bottom: 1%;
+    width: 60%;
+}
+
+#email {
+    margin-bottom: 1%;
+    width: 60%;
+}
+
+#reg-pass {
+    margin-bottom: 1%;
+    width: 60%;
+}
+
+#con-pass {
+    margin-bottom: 1%;
+    width: 60%;
+}
+
+#submit2 {
+    width: 30%;
+    background-color: aqua;
+}
+
+.tags {
+    color: whitesmoke;
+    font-size: 14px;
+}
+
+#ojt {
+    color: whitesmoke;
+    font-size: 54px;
+    padding-top: 6%;
+    margin-left: 5%;
+}

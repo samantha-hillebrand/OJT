@@ -1,18 +1,10 @@
 import React from "react";
-import CandidateModel from "../../../../backend/models/candidateModel";
+// import CandidateModel from "../../../../backend/models/candidateModel";
 
 const Modal = () => {
   // handleChange and submitHandler for all inputs
   return (
     <div>
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#myModal"
-      >
-        Create User
-      </button>
       <div className="modal" id="myModal">
         <div className="modal-dialog modal-lg modal-dialog-scrollable">
           <div className="modal-content">
@@ -27,7 +19,7 @@ const Modal = () => {
             <div className="modal-body">
               <form>
                 <div className="mb-3 mt-3">
-                  <label for="name" className="form-label">
+                  <label htmlFor="name" className="form-label">
                     Candidate:
                   </label>
                   <input
@@ -48,18 +40,15 @@ const Modal = () => {
                     required
                   />
                   {/* is this how u add name to an option? */}
-                  <label for="status" className="form-label">
+                  <label htmlFor="status" className="form-label">
                     Status:
                   </label>
                   <select className="form-select">
-                    <option selected>---</option>
+                    <option>---</option>
                     <option name="status_active" id="status_active">
                       Active
                     </option>
-                    <option
-                      name="status_not_active"
-                      id="status_not_active"
-                    >
+                    <option name="status_not_active" id="status_not_active">
                       Not Active
                     </option>
                     <option name="status_pending" id="status_pending">
@@ -68,7 +57,7 @@ const Modal = () => {
                   </select>
 
                   {/* is this how you add name to radio btns? */}
-                  <label for="graduated" className="form-label">
+                  <label htmlFor="graduated" className="form-label">
                     Graduated:
                   </label>
                   <div className="form-check">
@@ -78,7 +67,7 @@ const Modal = () => {
                       name="radio_one"
                       id="radio_one"
                     />
-                    <label className="form-check-label" for="radio_one">
+                    <label className="form-check-label" htmlFor="radio_one">
                       Yes
                     </label>
                   </div>
@@ -89,12 +78,12 @@ const Modal = () => {
                       name="radio_two"
                       id="radio_two"
                     />
-                    <label className="form-check-label" for="radio_two">
+                    <label className="form-check-label" htmlFor="radio_two">
                       No
                     </label>
                   </div>
 
-                  <label for="release" className="form-label">
+                  <label htmlFor="release" className="form-label">
                     Prison Release Date:
                   </label>
                   <div className="mb-3">
@@ -106,7 +95,7 @@ const Modal = () => {
                       required
                     />
                   </div>
-                  <label for="program" className="form-label">
+                  <label htmlFor="program" className="form-label">
                     Program Start Date:
                   </label>
                   <div className="mb-3">
@@ -118,7 +107,7 @@ const Modal = () => {
                       required
                     />
                   </div>
-                  <label for="banyan" className="form-label">
+                  <label htmlFor="banyan" className="form-label">
                     Banyan Start Date:
                   </label>
                   <div className="mb-3">
@@ -129,7 +118,7 @@ const Modal = () => {
                       id="datetime"
                     />
                   </div>
-                  <label for="enddate" className="form-label">
+                  <label htmlFor="enddate" className="form-label">
                     End Date:
                   </label>
                   <div className="mb-3">
@@ -141,7 +130,7 @@ const Modal = () => {
                       required
                     />
                   </div>
-                  <label for="dob" className="form-label">
+                  <label htmlFor="dob" className="form-label">
                     Date of Birth:
                   </label>
                   <div className="mb-3">
@@ -153,7 +142,7 @@ const Modal = () => {
                       required
                     />
                   </div>
-                  <label for="number" className="form-label">
+                  <label htmlFor="number" className="form-label">
                     Phone Number:
                   </label>
                   <input
@@ -164,65 +153,167 @@ const Modal = () => {
                     name="number"
                     required
                   />
-                  <label for="state" className="form-label">
+                  <label htmlFor="state" className="form-label">
                     State From:
                   </label>
                   {/* name and id needed- map thru the states*/}
                   <select className="form-select">
-                    <option name='state'selected>State From</option>
-                    <option name="1">AL</option>
-                    <option name="2">AK</option>
-                    <option name="3">AZ</option>
-                    <option name="4">AR</option>
-                    <option name="5">CA</option>
-                    <option name="6">CO</option>
-                    <option name="7">CT</option>
-                    <option name="8">DE</option>
-                    <option name="9">FL</option>
-                    <option name="10">GA</option>
-                    <option name="11">HI</option>
-                    <option name="12">ID</option>
-                    <option name="13">IL</option>
-                    <option name="14">IN</option>
-                    <option name="15">IA</option>
-                    <option name="16">KS</option>
-                    <option name="17">KY</option>
-                    <option name="18">LA</option>
-                    <option name="19">ME</option>
-                    <option name="20">MD</option>
-                    <option name="21">MA</option>
-                    <option name="22">MI</option>
-                    <option name="23">MN</option>
-                    <option name="24">MS</option>
-                    <option name="25">MO</option>
-                    <option name="26">MT</option>
-                    <option name="27">NE</option>
-                    <option name="28">NV</option>
-                    <option name="29">NH</option>
-                    <option name="30">NJ</option>
-                    <option name="31">NM</option>
-                    <option name="32">NY</option>
-                    <option name="33">NC</option>
-                    <option name="34">ND</option>
-                    <option name="35">OH</option>
-                    <option name="36">OK</option>
-                    <option name="37">OR</option>
-                    <option name="38">PA</option>
-                    <option name="39">RI</option>
-                    <option name="40">SC</option>
-                    <option name="41">SD</option>
-                    <option name="42">TN</option>
-                    <option name="43">TX</option>
-                    <option name="44">UT</option>
-                    <option name="45">VT</option>
-                    <option name="46">VA</option>
-                    <option name="47">WA</option>
-                    <option name="48">WV</option>
-                    <option name="49">WI</option>
-                    <option name="50">WY</option>
+                    <option value="q" name="state">
+                      State From
+                    </option>
+                    <option value="q" name="1">
+                      AL
+                    </option>
+                    <option value="q" name="2">
+                      AK
+                    </option>
+                    <option value="q" name="3">
+                      AZ
+                    </option>
+                    <option value="q" name="4">
+                      AR
+                    </option>
+                    <option value="q" name="5">
+                      CA
+                    </option>
+                    <option value="q" name="6">
+                      CO
+                    </option>
+                    <option value="q" name="7">
+                      CT
+                    </option>
+                    <option value="q" name="8">
+                      DE
+                    </option>
+                    <option value="q" name="9">
+                      FL
+                    </option>
+                    <option value="q" name="10">
+                      GA
+                    </option>
+                    <option value="q" name="11">
+                      HI
+                    </option>
+                    <option value="q" name="12">
+                      ID
+                    </option>
+                    <option value="q" name="13">
+                      IL
+                    </option>
+                    <option value="q" name="14">
+                      IN
+                    </option>
+                    <option value="q" name="15">
+                      IA
+                    </option>
+                    <option value="q" name="16">
+                      KS
+                    </option>
+                    <option value="q" name="17">
+                      KY
+                    </option>
+                    <option value="q" name="18">
+                      LA
+                    </option>
+                    <option value="q" name="19">
+                      ME
+                    </option>
+                    <option value="q" name="20">
+                      MD
+                    </option>
+                    <option value="q" name="21">
+                      MA
+                    </option>
+                    <option value="q" name="22">
+                      MI
+                    </option>
+                    <option value="q" name="23">
+                      MN
+                    </option>
+                    <option value="q" name="24">
+                      MS
+                    </option>
+                    <option value="q" name="25">
+                      MO
+                    </option>
+                    <option value="q" name="26">
+                      MT
+                    </option>
+                    <option value="q" name="27">
+                      NE
+                    </option>
+                    <option value="q" name="28">
+                      NV
+                    </option>
+                    <option value="q" name="29">
+                      NH
+                    </option>
+                    <option value="q" name="30">
+                      NJ
+                    </option>
+                    <option value="q" name="31">
+                      NM
+                    </option>
+                    <option value="q" name="32">
+                      NY
+                    </option>
+                    <option value="q" name="33">
+                      NC
+                    </option>
+                    <option value="q" name="34">
+                      ND
+                    </option>
+                    <option value="q" name="35">
+                      OH
+                    </option>
+                    <option value="q" name="36">
+                      OK
+                    </option>
+                    <option value="q" name="37">
+                      OR
+                    </option>
+                    <option value="q" name="38">
+                      PA
+                    </option>
+                    <option value="q" name="39">
+                      RI
+                    </option>
+                    <option value="q" name="40">
+                      SC
+                    </option>
+                    <option value="q" name="41">
+                      SD
+                    </option>
+                    <option value="q" name="42">
+                      TN
+                    </option>
+                    <option value="q" name="43">
+                      TX
+                    </option>
+                    <option value="q" name="44">
+                      UT
+                    </option>
+                    <option value="q" name="45">
+                      VT
+                    </option>
+                    <option value="q" name="46">
+                      VA
+                    </option>
+                    <option value="q" name="47">
+                      WA
+                    </option>
+                    <option value="q" name="48">
+                      WV
+                    </option>
+                    <option value="q" name="49">
+                      WI
+                    </option>
+                    <option value="q" name="50">
+                      WY
+                    </option>
                   </select>
 
-                  <label for="address" className="form-label">
+                  <label htmlFor="address" className="form-label">
                     Address:
                   </label>
                   <input
@@ -233,7 +324,7 @@ const Modal = () => {
                     name="address"
                     required
                   />
-                  <label for="email" className="form-label">
+                  <label htmlFor="email" className="form-label">
                     Personal Email:
                   </label>
                   <input
@@ -244,7 +335,7 @@ const Modal = () => {
                     name="persemail"
                     required
                   />
-                  <label for="email" className="form-label">
+                  <label htmlFor="email" className="form-label">
                     Banyan Email:
                   </label>
                   <input
@@ -255,7 +346,7 @@ const Modal = () => {
                     name="banyanemail"
                     required
                   />
-                  <label for="case" className="form-label">
+                  <label htmlFor="case" className="form-label">
                     Case Manager:
                   </label>
                   <input
@@ -266,7 +357,7 @@ const Modal = () => {
                     name="case"
                     required
                   />
-                  <label for="tes" className="form-label">
+                  <label htmlFor="tes" className="form-label">
                     TES:
                   </label>
                   <input
@@ -277,7 +368,7 @@ const Modal = () => {
                     name="tes"
                     required
                   />
-                  <label for="workbuddy" className="form-label">
+                  <label htmlFor="workbuddy" className="form-label">
                     Work Buddy:
                   </label>
                   <input
@@ -289,7 +380,7 @@ const Modal = () => {
                     required
                   />
                   {/* rubric link goes where?*/}
-                  <label for="rubric" className="form-label">
+                  <label htmlFor="rubric" className="form-label">
                     Rubric:
                   </label>
                   <br />

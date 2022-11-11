@@ -1,23 +1,25 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Logout.css";
+import { BiLogOut } from "react-icons/bi";
 
 const Logout = () => {
-  const navigate = useNavigate();
-  const logoutHandler = (e) => {
-    e.preventDefault();
+  // const navigate = useNavigate();
+  const logoutHandler = () => {
+    console.log("hi");
     axios.get("http://localhost:8800/logout").then((response) => {
       localStorage.setItem("user", null);
       navigate(response.data.redirectUrl);
     });
   };
   return (
-    <div class="container">
-      <button className="nav-link" onClick={logoutHandler} href="#">
-        Logout
-      </button>
-    </div>
+    <span
+      className="dropdown-item bg-danger-soft-hover"
+      onClick={logoutHandler}
+    >
+      <BiLogOut className="m-2" />
+      Sign Out
+    </span>
   );
 };
 export default Logout;

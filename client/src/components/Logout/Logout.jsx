@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 
 const Logout = () => {
@@ -9,7 +9,7 @@ const Logout = () => {
     console.log("hi");
     axios.get("http://localhost:8800/logout").then((response) => {
       localStorage.setItem("user", null);
-      navigate(response.data.redirectUrl);
+      // navigate(response.data.redirectUrl);
     });
   };
   return (

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ModalStates from "./ModalStates";
 
+// working on git
+
 const Modal = () => {
   const [inputs, setInputs] = useState({});
   const [graduatedValue, graduatedInputProps] = useRadioButtons("graduated");

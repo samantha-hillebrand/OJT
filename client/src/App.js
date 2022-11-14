@@ -7,15 +7,6 @@ import Main from "./components/Main/Main";
 
 
 function App() {
-
-  const [userInfo, setUserInfo] = useState({
-    fname: "",
-    lname: "",
-    username: "",
-    password: "",
-    confirm: "",
-  });
-
   return (
     <div className="App">
       <Router>

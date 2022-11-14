@@ -3,8 +3,10 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
 
-const Register = ({ userInfo, setUserInfo }) => {
+const Register = () => {
+
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     e.preventDefault();
     const name = e.target.name;

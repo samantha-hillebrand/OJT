@@ -7,6 +7,11 @@ import { useState } from "react";
 // import { login } from "../../../../backend/controllers/userControllers";
 
 const Register = () => {
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+
   const [inputs, setInputs] = useState({})
   // const navigate = useNavigate();
   const changeHandler = (e) => {

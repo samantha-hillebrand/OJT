@@ -41,7 +41,7 @@ const Modal = () => {
   return (
     // <>
       <div className="modal" id="myModal">
-        <div className="modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div className="modal-lg modal-dialog modal-dialog-scrollable">
           <div className="modal-content" style={{ height: "65vh" }}>
             <div className="modal-header">
               <h4 className="modal-title">OJT Tracker Candidate Form</h4>

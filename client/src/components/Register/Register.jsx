@@ -2,28 +2,37 @@ import React from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./Register.css";
+import handleChange from "../../actions/handleChange";
+import { useState } from "react";
+// import { login } from "../../../../backend/controllers/userControllers";
 
-const Register = ({ userInfo, setUserInfo }) => {
+const Register = () => {
+
   const navigate = useNavigate();
+
   const handleChange = (e) => {
+
+  const [inputs, setInputs] = useState({})
+  // const navigate = useNavigate();
+  const changeHandler = (e) => {
     e.preventDefault();
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
+    setInputs(handleChange(inputs, e))
   };
+  console.log("inputs", inputs);
+
   const submitHandler = (e) => {
-    console.log("click");
     e.preventDefault();
-    if (userInfo.password !== userInfo.confirm) {
+    console.log("click", inputs);
+    if (inputs.password !== inputs.confirmpsw) {
       alert("The passwords do not match!");
     } else {
-      axios.post("http://localhost:8800/signup", userInfo).then((response) => {
+      console.log("help");
+      axios.post("http://localhost:8800/signup", inputs).then((response) => {
+        console.log("response",response);
         if (response.data.success) {
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-          navigate(response.data.redirectUrl, userInfo);
+          console.log("fuck yeah");
+          // localStorage.setItem("user", JSON.stringify(response.data.user));
+          // navigate(response.data.redirectUrl, inputs);
         } else {
           console.log(response.data);
         }
@@ -40,7 +49,7 @@ const Register = ({ userInfo, setUserInfo }) => {
         <h1 id="reg-here">New User</h1>
         <h3 className="tags">First Name</h3>
         <input
-          onClick={handleChange}
+          onChange={changeHandler}
           type="text"
           name="firstname"
           id="first-name"
@@ -49,7 +58,7 @@ const Register = ({ userInfo, setUserInfo }) => {
         <br />
         <h3 className="tags">Last Name</h3>
         <input
-          onClick={handleChange}
+          onChange={changeHandler}
           type="text"
           name="lastname"
           id="last-name"
@@ -58,7 +67,7 @@ const Register = ({ userInfo, setUserInfo }) => {
         <br />
         <h3 className="tags">Email</h3>
         <input
-          onClick={handleChange}
+          onChange={changeHandler}
           type="text"
           name="email"
           id="email"
@@ -69,7 +78,7 @@ const Register = ({ userInfo, setUserInfo }) => {
         <input
           className="input"
           id="reg-pass"
-          onClick={handleChange}
+          onChange={changeHandler}
           type="password"
           name="password"
           required
@@ -79,14 +88,15 @@ const Register = ({ userInfo, setUserInfo }) => {
         <input
           className="input"
           id="con-pass"
-          onClick={handleChange}
+          onChange={changeHandler}
           type="password"
-          name="confirm"
+          name="confirmpsw"
           required
         />
         <br />
         <button id="submit2" name="submit" type="submit">
-          <Link to="/main">Register</Link>
+          Register
+          {/* <Link to="/main">Register</Link> */}
         </button>
       </form>
     </div>

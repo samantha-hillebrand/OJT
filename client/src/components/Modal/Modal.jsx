@@ -1,13 +1,48 @@
-import React from "react";
-// import CandidateModel from "../../../../backend/models/candidateModel";
+import React, { useState } from "react";
+import ModalStates from "./ModalStates";
+
+// working on git
 
 const Modal = () => {
-  // handleChange and submitHandler for all inputs
+  const [inputs, setInputs] = useState({});
+  const [graduatedValue, graduatedInputProps] = useRadioButtons("graduated");
+
+  const handleChange = (e) => {
+    // console.log(e.target);
+    const { name, value } = e.target;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("inputs", inputs);
+  };
+
+  function useRadioButtons(name) {
+    const [value, setState] = useState(null);
+
+    const handleInputChange = (e) => {
+      setState(e.target.value);
+    };
+
+    const inputProps = {
+      name,
+      id: "radio_one",
+      className: "form-check-input",
+      type: "radio",
+      onChange: handleInputChange,
+    };
+
+    return [value, inputProps];
+  }
+
+  console.log("inputs", inputs);
+
   return (
-    <div>
+    // <>
       <div className="modal" id="myModal">
-        <div className="modal-dialog modal-lg modal-dialog-scrollable">
-          <div className="modal-content">
+        <div className="modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div className="modal-content" style={{ height: "65vh" }}>
             <div className="modal-header">
               <h4 className="modal-title">OJT Tracker Candidate Form</h4>
               <button
@@ -28,6 +63,7 @@ const Modal = () => {
                     id="firstname"
                     placeholder="First Name"
                     name="firstname"
+                    onChange={handleChange}
                     required
                   />
                   <br />
@@ -37,14 +73,20 @@ const Modal = () => {
                     id="lastname"
                     placeholder="Last Name"
                     name="lastname"
+                    onChange={handleChange}
                     required
                   />
                   {/* is this how u add name to an option? */}
                   <label htmlFor="status" className="form-label">
                     Status:
                   </label>
-                  <select className="form-select">
-                    <option>---</option>
+                  <select
+                    className="form-select"
+                    name="status"
+                    onChange={handleChange}
+                  >
+                    {/* figure out how to make this not clickable */}
+                    <option defaultValue></option>
                     <option name="status_active" id="status_active">
                       Active
                     </option>
@@ -55,32 +97,31 @@ const Modal = () => {
                       Pending
                     </option>
                   </select>
-
                   {/* is this how you add name to radio btns? */}
-                  <label htmlFor="graduated" className="form-label">
-                    Graduated:
-                  </label>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="radio_one"
-                      id="radio_one"
-                    />
-                    <label className="form-check-label" htmlFor="radio_one">
-                      Yes
+                  <div onChange={handleChange}>
+                    <label htmlFor="graduated" className="form-label">
+                      Graduated:
                     </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="radio_two"
-                      id="radio_two"
-                    />
-                    <label className="form-check-label" htmlFor="radio_two">
-                      No
-                    </label>
+                    <div className="form-check">
+                      <input
+                        value="Yes"
+                        defaultChecked={graduatedValue === "Yes"}
+                        {...graduatedInputProps}
+                      />
+                      <label className="form-check-label" htmlFor="radio_one">
+                        Yes
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <label className="form-check-label" htmlFor="radio_two">
+                        <input
+                          value="No"
+                          defaultChecked={graduatedValue === "Yes"}
+                          {...graduatedInputProps}
+                        />
+                        No
+                      </label>
+                    </div>
                   </div>
 
                   <label htmlFor="release" className="form-label">
@@ -88,10 +129,11 @@ const Modal = () => {
                   </label>
                   <div className="mb-3">
                     <input
+                      id="datetime"
                       type="date"
                       name="release"
                       className="form-control"
-                      id="datetime"
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -100,10 +142,11 @@ const Modal = () => {
                   </label>
                   <div className="mb-3">
                     <input
+                      id="datetime"
                       type="date"
                       name="program"
                       className="form-control"
-                      id="datetime"
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -112,10 +155,11 @@ const Modal = () => {
                   </label>
                   <div className="mb-3">
                     <input
+                      id="datetime"
                       type="date"
                       name="banyan"
                       className="form-control"
-                      id="datetime"
+                      onChange={handleChange}
                     />
                   </div>
                   <label htmlFor="enddate" className="form-label">
@@ -123,11 +167,12 @@ const Modal = () => {
                   </label>
                   <div className="mb-3">
                     <input
+                      id="datetime"
                       type="date"
                       name="enddate"
                       className="form-control"
-                      id="datetime"
                       required
+                      onChange={handleChange}
                     />
                   </div>
                   <label htmlFor="dob" className="form-label">
@@ -135,10 +180,11 @@ const Modal = () => {
                   </label>
                   <div className="mb-3">
                     <input
+                      id="datetime"
                       type="date"
                       name="dob"
                       className="form-control"
-                      id="datetime"
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -146,11 +192,12 @@ const Modal = () => {
                     Phone Number:
                   </label>
                   <input
+                    id="number"
                     type="text"
                     className="form-control"
-                    id="number"
                     placeholder="Number"
                     name="number"
+                    onChange={handleChange}
                     required
                   />
                   <label htmlFor="state" className="form-label">
@@ -158,214 +205,74 @@ const Modal = () => {
                   </label>
                   {/* name and id needed- map thru the states*/}
                   <select className="form-select">
-                    <option value="q" name="state">
+                    <option value="q" name="state" disabled>
                       State From
                     </option>
-                    <option value="q" name="1">
-                      AL
-                    </option>
-                    <option value="q" name="2">
-                      AK
-                    </option>
-                    <option value="q" name="3">
-                      AZ
-                    </option>
-                    <option value="q" name="4">
-                      AR
-                    </option>
-                    <option value="q" name="5">
-                      CA
-                    </option>
-                    <option value="q" name="6">
-                      CO
-                    </option>
-                    <option value="q" name="7">
-                      CT
-                    </option>
-                    <option value="q" name="8">
-                      DE
-                    </option>
-                    <option value="q" name="9">
-                      FL
-                    </option>
-                    <option value="q" name="10">
-                      GA
-                    </option>
-                    <option value="q" name="11">
-                      HI
-                    </option>
-                    <option value="q" name="12">
-                      ID
-                    </option>
-                    <option value="q" name="13">
-                      IL
-                    </option>
-                    <option value="q" name="14">
-                      IN
-                    </option>
-                    <option value="q" name="15">
-                      IA
-                    </option>
-                    <option value="q" name="16">
-                      KS
-                    </option>
-                    <option value="q" name="17">
-                      KY
-                    </option>
-                    <option value="q" name="18">
-                      LA
-                    </option>
-                    <option value="q" name="19">
-                      ME
-                    </option>
-                    <option value="q" name="20">
-                      MD
-                    </option>
-                    <option value="q" name="21">
-                      MA
-                    </option>
-                    <option value="q" name="22">
-                      MI
-                    </option>
-                    <option value="q" name="23">
-                      MN
-                    </option>
-                    <option value="q" name="24">
-                      MS
-                    </option>
-                    <option value="q" name="25">
-                      MO
-                    </option>
-                    <option value="q" name="26">
-                      MT
-                    </option>
-                    <option value="q" name="27">
-                      NE
-                    </option>
-                    <option value="q" name="28">
-                      NV
-                    </option>
-                    <option value="q" name="29">
-                      NH
-                    </option>
-                    <option value="q" name="30">
-                      NJ
-                    </option>
-                    <option value="q" name="31">
-                      NM
-                    </option>
-                    <option value="q" name="32">
-                      NY
-                    </option>
-                    <option value="q" name="33">
-                      NC
-                    </option>
-                    <option value="q" name="34">
-                      ND
-                    </option>
-                    <option value="q" name="35">
-                      OH
-                    </option>
-                    <option value="q" name="36">
-                      OK
-                    </option>
-                    <option value="q" name="37">
-                      OR
-                    </option>
-                    <option value="q" name="38">
-                      PA
-                    </option>
-                    <option value="q" name="39">
-                      RI
-                    </option>
-                    <option value="q" name="40">
-                      SC
-                    </option>
-                    <option value="q" name="41">
-                      SD
-                    </option>
-                    <option value="q" name="42">
-                      TN
-                    </option>
-                    <option value="q" name="43">
-                      TX
-                    </option>
-                    <option value="q" name="44">
-                      UT
-                    </option>
-                    <option value="q" name="45">
-                      VT
-                    </option>
-                    <option value="q" name="46">
-                      VA
-                    </option>
-                    <option value="q" name="47">
-                      WA
-                    </option>
-                    <option value="q" name="48">
-                      WV
-                    </option>
-                    <option value="q" name="49">
-                      WI
-                    </option>
-                    <option value="q" name="50">
-                      WY
-                    </option>
+                    {ModalStates.map((state, index) => (
+                      <option key={index} value={state} name={state}>
+                        {state}
+                      </option>
+                    ))}
                   </select>
-
                   <label htmlFor="address" className="form-label">
                     Address:
                   </label>
                   <input
+                    id="address"
                     type="text"
                     className="form-control"
-                    id="address"
                     placeholder="Address"
                     name="address"
+                    onChange={handleChange}
                     required
                   />
                   <label htmlFor="email" className="form-label">
                     Personal Email:
                   </label>
                   <input
+                    id="persemail"
                     type="email"
                     className="form-control"
-                    id="persemail"
                     placeholder="Personal email"
                     name="persemail"
+                    onChange={handleChange}
                     required
                   />
                   <label htmlFor="email" className="form-label">
                     Banyan Email:
                   </label>
                   <input
+                    id="banyanemail"
                     type="email"
                     className="form-control"
-                    id="banyanemail"
                     placeholder="Banyan email"
                     name="banyanemail"
+                    onChange={handleChange}
                     required
                   />
+                  {/* need to make a select with options to click */}
                   <label htmlFor="case" className="form-label">
                     Case Manager:
                   </label>
                   <input
+                    id="case"
                     type="text"
                     className="form-control"
-                    id="case"
                     placeholder="Case Manager Name"
                     name="case"
+                    onChange={handleChange}
                     required
                   />
                   <label htmlFor="tes" className="form-label">
                     TES:
                   </label>
                   <input
+                    id="tes"
                     type="text"
                     className="form-control"
-                    id="tes"
                     placeholder="TES Name"
                     name="tes"
+                    onChange={handleChange}
                     required
                   />
                   <label htmlFor="workbuddy" className="form-label">
@@ -407,7 +314,7 @@ const Modal = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </>
   );
 };
 

@@ -3,15 +3,15 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport')
 
 const signUp = (req, res, next) => {
-    UserModel.findOne({ username: req.body.username }, (err, data) => {
+    UserModel.findOne({ email: req.body.email }, (err, data) => {
       var hash = bcrypt.hashSync(req.body.password, 12)
       if (err) {
         console.log(err)
       } else if (data) {
-        res.json({ message: "Username already exists" })
+        res.json({ message: "User already exists" })
       } else {
         let person = new UserModel({
-          username: req.body.username,
+          email: req.body.email,
           password: hash
         })
         person.save((err, data) => {
@@ -64,7 +64,7 @@ const signUp = (req, res, next) => {
   };
   const changePassword = (req, res) => {
     console.log(req.body);
-    if (req.body.newpassword == req.body.confirm) {
+    if (req.body.newpassword == req.body.confirmpsw) {
       var newhash = bcrypt.hashSync(req.body.newpassword, 12)
       console.log(newhash);
       UserModel.findOneAndUpdate({ username: req.body.username }, { password: newhash }, {
@@ -85,6 +85,7 @@ const signUp = (req, res, next) => {
     }
   };
   const logout = (req, res) => {
+    console.log("no");
     req.logout();
     res.status(200).json({
       success: true,

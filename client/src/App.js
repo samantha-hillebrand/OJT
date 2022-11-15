@@ -8,14 +8,6 @@ import Main from "./components/Main/Main";
 
 function App() {
 
-  const [userInfo, setUserInfo] = useState({
-    fname: "",
-    lname: "",
-    username: "",
-    password: "",
-    confirm: "",
-  });
-
   return (
     <div className="App">
       <Router>
@@ -24,18 +16,18 @@ function App() {
             exact
             path="/"
             element={
-              <LandingPage userInfo={userInfo} setUserInfo={setUserInfo} />
+              <LandingPage />
             }
           />
           <Route
             exact
             path="/register"
-            element={<Register userInfo={userInfo} setUserInfo={setUserInfo} />}
+            element={<Register />}
           />
           <Route
             exact
             path="/main"
-            element={<Main userInfo={userInfo} setUserInfo={setUserInfo} />}
+            element={<Main />}
           />
         </Routes>
       </Router>

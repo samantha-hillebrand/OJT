@@ -7,7 +7,7 @@
 }
 
 #tracker {
-  color: bisque;
+  color: whitesmoke;
   font-size: 54px;
   padding-top: 6%;
   margin-left: 5%;
@@ -15,12 +15,12 @@
 
 #signin {
   margin-left: 7%;
-  color: bisque;
+  color: whitesmoke;
   font-size: 42px;
 }
 
-#email {
-  color: bisque;
+#emailaddress {
+  color: whitesmoke;
 }
 
 #landing-Page {
@@ -54,6 +54,6 @@
 }
 
 #newUser {
-  color: bisque;
+  color: whitesmoke;
   text-decoration: none;
 }

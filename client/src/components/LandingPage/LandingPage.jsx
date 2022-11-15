@@ -43,7 +43,7 @@ const LandingPage = ({ userInfo, setUserInfo }) => {
           required
         ></input>
         <br />
-        <h6 id="email">Password</h6>
+        <h6 id="emailaddress">Password</h6>
         <input
           onClick={handleChange}
           className="input"
@@ -60,7 +60,7 @@ const LandingPage = ({ userInfo, setUserInfo }) => {
         </button>
         <br />
         <Link to="/register" id="newUser">
-          <h4>New User?</h4>
+          <h4 id= 'user'>New User?</h4>
         </Link>
       </form>
     </div>

@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport')
 
 const signUp = (req, res, next) => {
-    UserModel.findOne({ email: req.body.email }, (err, data) => {
+    UserModel.findOne({ username: req.body.username }, (err, data) => {
       var hash = bcrypt.hashSync(req.body.password, 12)
       if (err) {
         console.log(err)

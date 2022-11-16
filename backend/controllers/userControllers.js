@@ -11,9 +11,9 @@ const signUp = (req, res, next) => {
         res.json({ message: "User already exists" })
       } else {
         let person = new UserModel({
-          email: req.body.email,
-          password: hash
-        })
+          username: req.body.username,
+          password: hash,
+        });
         person.save((err, data) => {
           if (err) {
             console.log(err);

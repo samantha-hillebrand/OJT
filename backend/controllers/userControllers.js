@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport')
 
 const signUp = (req, res, next) => {
-    UserModel.findOne({ email: req.body.email }, (err, data) => {
+    UserModel.findOne({ username: req.body.username }, (err, data) => {
       var hash = bcrypt.hashSync(req.body.password, 12)
       if (err) {
         console.log(err)
@@ -11,9 +11,9 @@ const signUp = (req, res, next) => {
         res.json({ message: "User already exists" })
       } else {
         let person = new UserModel({
-          email: req.body.email,
-          password: hash
-        })
+          username: req.body.username,
+          password: hash,
+        });
         person.save((err, data) => {
           if (err) {
             console.log(err);

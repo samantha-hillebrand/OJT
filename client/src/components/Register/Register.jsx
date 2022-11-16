@@ -1,41 +1,35 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import handleChange from "../../actions/handleChange";
 import { useState } from "react";
-// import { login } from "../../../../backend/controllers/userControllers";
 
 const Register = () => {
-
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const [inputs, setInputs] = useState({});
 
-  const [inputs, setInputs] = useState({})
-  // const navigate = useNavigate();
   const changeHandler = (e) => {
     e.preventDefault();
-    setInputs(handleChange(inputs, e))
+    setInputs(handleChange(inputs, e));
   };
-  console.log("inputs", inputs);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("click", inputs);
     if (inputs.password !== inputs.confirmpsw) {
       alert("The passwords do not match!");
     } else {
       console.log("help");
-      axios.post("http://localhost:8800/signup", inputs).then((response) => {
-        console.log("response",response);
-        if (response.data.success) {
-          console.log("fuck yeah");
-          // localStorage.setItem("user", JSON.stringify(response.data.user));
-          // navigate(response.data.redirectUrl, inputs);
-        } else {
-          console.log(response.data);
-        }
+      axios.post("http://localhost:8800/signup", inputs)
+        .then((response) => {
+          console.log("response1", response);
+          if (response.data.success) {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            navigate(response.data.redirectUrl, inputs);
+          } else {
+            console.log(response.data);
+          }
       });
     }
   };
@@ -69,7 +63,7 @@ const Register = () => {
         <input
           onChange={changeHandler}
           type="text"
-          name="email"
+          name="username"
           id="email"
           required
         />
@@ -96,7 +90,6 @@ const Register = () => {
         <br />
         <button id="submit2" name="submit" type="submit">
           Register
-          {/* <Link to="/main">Register</Link> */}
         </button>
       </form>
     </div>

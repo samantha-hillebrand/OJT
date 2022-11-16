@@ -10,10 +10,7 @@ const Register = () => {
 
   const [inputs, setInputs] = useState({});
 
-  const changeHandler = (e) => {
-    e.preventDefault();
-    setInputs(handleChange(inputs, e));
-  };
+  const changeHandler = (e) => setInputs(handleChange(inputs, e));
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -21,15 +18,14 @@ const Register = () => {
       alert("The passwords do not match!");
     } else {
       console.log("help");
-      axios.post("http://localhost:8800/signup", inputs)
-        .then((response) => {
-          console.log("response1", response);
-          if (response.data.success) {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            navigate(response.data.redirectUrl, inputs);
-          } else {
-            console.log(response.data);
-          }
+      axios.post("http://localhost:8800/signup", inputs).then((response) => {
+        console.log("response1", response);
+        if (response.data.success) {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          navigate(response.data.redirectUrl, inputs);
+        } else {
+          console.log(response.data);
+        }
       });
     }
   };

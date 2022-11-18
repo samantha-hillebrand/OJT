@@ -1,12 +1,12 @@
 import React from 'react'
 import Nav from "../Nav/Nav";
-import InernList from '../InternList/InternList'
+import Container from './Container/Container';
 
 const Main = () => {
   return (
     <div>
         <Nav />
-        <InernList />
+        <Container />
     </div>
   )
 }

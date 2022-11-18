@@ -55,15 +55,9 @@ const LandingPage = () => {
           Sign In
         </button>
         <br />
-<<<<<<< HEAD
-        <Link to="/register" id="newUser">
-          <h4 id= 'user'>New User?</h4>
-        </Link>
-=======
         <a to="/register" id="newUser">
           <h4>New User?</h4>
         </a>
->>>>>>> 88714d9fa9b1dfa5ea9af8102dc43c42d572fe4b
       </form>
     </div>
   );

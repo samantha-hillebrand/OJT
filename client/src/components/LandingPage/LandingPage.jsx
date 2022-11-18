@@ -41,7 +41,7 @@ const LandingPage = () => {
           required
         ></input>
         <br />
-        <h6 id="email">Password</h6>
+        <h6 id="emailaddress">Password</h6>
         <input
           onChange={changeHandler}
           className="input"

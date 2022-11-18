@@ -1,5 +1,4 @@
 import React from "react";
-import "./InternList.css";
 import Intern from "./Intern";
 
 const info = [
@@ -152,7 +151,7 @@ const info = [
 const InternList = () => {
   return (
     <div className="row">
-      <div className="col-10">
+      <div className="col-12">
         <div className="card border-0 flex-fill p-2 bg-light" id="users">
           <div className="card-header border-0">
             <h2 className="h4 text-uppercase">Banyan Interns</h2>
@@ -197,7 +196,7 @@ const InternList = () => {
           </div>
         </div>
       </div>
-      <div className="col border"></div>
+      {/* <div className="col border"></div> */}
     </div>
   );
 };

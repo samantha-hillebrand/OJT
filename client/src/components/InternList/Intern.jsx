@@ -1,11 +1,12 @@
 import React from "react";
+import './Intern.css'
 
 const Intern = ({ intern, index }) => {
   return (
     <tr
       onClick={(e) => console.log(e.target)}
       className=""
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer"}}
     >
       <td>
         <div className="avatar avatar-circle avatar-sm me-2">

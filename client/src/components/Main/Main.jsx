@@ -1,23 +1,32 @@
 import React from "react";
 import Nav from "../Nav/Nav";
 import Container from "./Container/Container";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import Modal from "../Modal/Modal";
+import { createContext, useState, useMemo, useEffect } from "react";
+import axios from "axios";
+
+export const InternsContext = createContext({
+  interns: [],
+  setInterns: () => {},
+});
 
 const Main = () => {
-  // console.log('_id', _id)
-  let { _id } = useParams();
-  console.log(_id);
+  const [interns, setInterns] = useState([]);
 
   useEffect(() => {
+    axios.get("http://localhost:8800/interns")
+      .then((res) => setInterns(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  }, [])
+  const value = useMemo(() => ({ interns, setInterns }), [interns]);
 
   return (
-    <div>
+    <InternsContext.Provider value={value}>
+      <Modal />
       <Nav />
       <Container />
-    </div>
+    </InternsContext.Provider>
   );
 };
 

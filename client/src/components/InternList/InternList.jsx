@@ -1,154 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Intern from "./Intern";
-
-const info = [
-  {
-    firstName: "Randall",
-    lastName: "Nelson",
-    email: "randalln559@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Samantha",
-    lastName: "Hillebrand",
-    email: "samanthah@gmail.com",
-    release: "09.03.2022",
-    start: "09.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Oneida",
-    lastName: "Galvez",
-    email: "gOneida@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Vernon",
-    lastName: "Henry",
-    email: "vernonhgmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Howard",
-    lastName: "Irreland",
-    email: "irrelandh@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "done",
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Juarez",
-    email: "kevinj@gmail.com",
-    release: "12.26.2022",
-    start: "1.09.2022",
-    status: "prison",
-  },
-  {
-    firstName: "Randall",
-    lastName: "Nelson",
-    email: "randalln559@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Samantha",
-    lastName: "Hillebrand",
-    email: "samanthah@gmail.com",
-    release: "09.03.2022",
-    start: "09.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Oneida",
-    lastName: "Galvez",
-    email: "gOneida@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Vernon",
-    lastName: "Henry",
-    email: "vernonhgmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Howard",
-    lastName: "Irreland",
-    email: "irrelandh@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "done",
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Juarez",
-    email: "kevinj@gmail.com",
-    release: "12.26.2022",
-    start: "1.09.2022",
-    status: "prison",
-  },
-  {
-    firstName: "Randall",
-    lastName: "Nelson",
-    email: "randalln559@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Samantha",
-    lastName: "Hillebrand",
-    email: "samanthah@gmail.com",
-    release: "09.03.2022",
-    start: "09.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Oneida",
-    lastName: "Galvez",
-    email: "gOneida@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Vernon",
-    lastName: "Henry",
-    email: "vernonhgmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "active",
-  },
-  {
-    firstName: "Howard",
-    lastName: "Irreland",
-    email: "irrelandh@gmail.com",
-    release: "10.03.2022",
-    start: "10.17.2022",
-    status: "done",
-  },
-  {
-    firstName: "Kevin",
-    lastName: "Juarez",
-    email: "kevinj@gmail.com",
-    release: "12.26.2022",
-    start: "1.09.2022",
-    status: "prison",
-  },
-];
+import { InternsContext } from "../Main/Main";
 
 const InternList = () => {
+  const { interns } = useContext(InternsContext);
   return (
     <div className="row">
       <div className="col-12">
@@ -180,7 +35,7 @@ const InternList = () => {
               </thead>
 
               <tbody className="list scroll">
-                {info.map((intern, index) => (
+                {interns.map((intern, index) => (
                   <Intern key={index} intern={intern} index={index} />
                 ))}
               </tbody>
@@ -190,7 +45,7 @@ const InternList = () => {
           <div className="card-footer">
             <div className="d-flex justify-content-between align-items-center p-2">
               <div className="me-5 text-secondary small">
-                Showing: {info.length}
+                Showing: {interns.length}
               </div>
             </div>
           </div>

@@ -15,9 +15,14 @@ const LandingPage = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios.post("http://localhost:8800/login", inputs).then((response) => {
+      // let { _id } = ;
+      // console.log(_id);
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
-        navigate(response.data.redirectUrl, inputs);
+        console.log("99", response.data.redirectUrl);
+        navigate(`/main${response.data.user._id}`);
+        // are we using the inputs anywhere
+        // navigate(response.data.redirectUrl, inputs);
       } else {
         alert("Invalid Password!");
       }

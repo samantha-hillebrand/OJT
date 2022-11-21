@@ -26,7 +26,7 @@ function App() {
           />
           <Route
             exact
-            path="/main"
+            path="/main:_id"
             element={<Main />}
           />
         </Routes>

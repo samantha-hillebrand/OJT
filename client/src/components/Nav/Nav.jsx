@@ -69,7 +69,6 @@ const Nav = () => {
                   </li>
                   <li>
                     <span className="dropdown-item bg-danger-soft-hover">
-                      {/* <BiLogOut className="m-2" /> */}
                       <Logout />
                     </span>
                   </li>

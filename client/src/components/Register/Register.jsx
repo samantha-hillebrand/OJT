@@ -22,7 +22,8 @@ const Register = () => {
         console.log("response1", response);
         if (response.data.success) {
           localStorage.setItem("user", JSON.stringify(response.data.user));
-          navigate(response.data.redirectUrl, inputs);
+          // navigate(response.data.redirectUrl, inputs);
+          navigate(`/main${response.data.user._id}`);
         } else {
           console.log(response.data);
         }

@@ -11,6 +11,7 @@ const Modal = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "telNumber") {
+      console.log(e.nativeEvent)
       if (e.nativeEvent.data >= 0 && e.nativeEvent.data <= 9 && value.length <= 10) {
         setInputs((values) => ({ ...values, [name]: value }));
       }
@@ -40,7 +41,7 @@ const Modal = () => {
     return [value, inputProps];
   }
 
-  console.log("inputs", inputs);
+  // console.log("inputs", inputs);
 
   return (
     <div className="modal" id="myModal">

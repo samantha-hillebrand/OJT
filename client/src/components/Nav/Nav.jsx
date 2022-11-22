@@ -1,13 +1,13 @@
 import React from "react";
 import Logo from "../../assets/cropped-BL_LOGO-201x26.png";
 import "./Nav.css";
-import Modal from "../Modal/Modal";
+// import Modal from "../Modal/Modal";
 import Logout from "../Logout/Logout";
 
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <Modal />
+      {/* <Modal /> */}
       <div className="container-fluid">
         <div className="navbar-brand">
           <img src={Logo} alt="banyan labs" className="img-fluid m-2" />

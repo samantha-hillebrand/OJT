@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import ModalStates from "./ModalStates";
 import ModalTes from "./ModalTes";
-
+import ModalCaseMan from "./ModalCaseMan";
+import { InternsContext } from "../Main/Main";
+import axios from "axios";
+import { useContext } from "react";
 
 const Modal = () => {
+  const { interns, setInterns } = useContext(InternsContext);
   const [inputs, setInputs] = useState({});
   const [graduatedValue, graduatedInputProps] =
     useRadioButtons("graduatedPersevere");
@@ -11,16 +15,25 @@ const Modal = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "telNumber") {
-      console.log(e.nativeEvent)
-      if (e.nativeEvent.data >= 0 && e.nativeEvent.data <= 9 && value.length <= 10) {
+      if (
+        e.nativeEvent.data >= 0 &&
+        e.nativeEvent.data <= 9 &&
+        value.length <= 10
+      ) {
         setInputs((values) => ({ ...values, [name]: value }));
       }
-    }
-    else setInputs((values) => ({ ...values, [name]: value }));
+    } else setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:8800/newIntern", inputs)
+      .then((res) => {
+        console.log("res", res);
+        setInterns(prev => [...prev, inputs])
+      })
+      .catch((err) => console.log(err));
   };
 
   function useRadioButtons(name) {
@@ -46,7 +59,7 @@ const Modal = () => {
   return (
     <div className="modal" id="myModal">
       <div className="modal-lg modal-dialog modal-dialog-scrollable">
-        <div className="modal-content" style={{ height: "65vh" }}>
+        <div className="modal-content" style={{ height: "75vh" }}>
           <div className="modal-header">
             <h4 className="modal-title">OJT Tracker Candidate Form</h4>
             <button
@@ -56,7 +69,7 @@ const Modal = () => {
             ></button>
           </div>
           <div className="modal-body">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-3 mt-3">
                 <label htmlFor="name" className="form-label">
                   Candidate:
@@ -64,9 +77,9 @@ const Modal = () => {
                 <input
                   type="text"
                   className="form-control"
-                  id="firstname"
+                  id="firstName"
                   placeholder="First Name"
-                  name="firstname"
+                  name="firstName"
                   onChange={handleChange}
                   required
                 />
@@ -74,13 +87,12 @@ const Modal = () => {
                 <input
                   type="text"
                   className="form-control mb-2"
-                  id="lastname"
+                  id="lastName"
                   placeholder="Last Name"
-                  name="lastname"
+                  name="lastName"
                   onChange={handleChange}
                   required
                 />
-                {/* is this how u add name to an option? */}
                 <label htmlFor="status" className="form-label">
                   Status:
                 </label>
@@ -103,7 +115,6 @@ const Modal = () => {
                     Pending
                   </option>
                 </select>
-                {/* is this how you add name to radio btns? */}
                 <div onChange={handleChange}>
                   <label htmlFor="graduated" className="form-label">
                     Graduated:
@@ -167,7 +178,7 @@ const Modal = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <label htmlFor="enddate" className="form-label">
+                <label htmlFor="banyanEndDate" className="form-label">
                   End Date:
                 </label>
                 <div className="mb-3">
@@ -202,18 +213,23 @@ const Modal = () => {
                   className="form-control"
                   placeholder="Number"
                   name="telNumber"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                   value={inputs.telNumber || ""}
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="state" className="form-label">
-                  State From:
+                <label htmlFor="stateOfResidence" className="form-label">
+                  State Of Residence:
                 </label>
-                {/* name and id needed- map thru the states*/}
-                <select className="form-select" defaultValue={"DEFAULT"}>
-                  <option name="state" disabled value={"DEFAULT"}>
-                    --State From--
+                <select
+                  className="form-select"
+                  defaultValue={"DEFAULT"}
+                  name="stateOfResidence"
+                  onChange={handleChange}
+                  required
+                >
+                  <option disabled value={"DEFAULT"}>
+                    --State Of Residence--
                   </option>
                   {ModalStates.map((state, index) => (
                     <option key={index} value={state} name={state}>
@@ -233,57 +249,61 @@ const Modal = () => {
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="email" className="form-label">
+                <label htmlFor="personalEmail" className="form-label">
                   Personal Email:
                 </label>
                 <input
-                  id="persemail"
+                  id="personalEmail"
                   type="email"
                   className="form-control"
                   placeholder="Personal email"
-                  name="persemail"
+                  name="personalEmail"
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="email" className="form-label">
+                <label htmlFor="banyanEmail" className="form-label">
                   Banyan Email:
                 </label>
                 <input
-                  id="banyanemail"
+                  id="banyanEmail"
                   type="email"
                   className="form-control"
                   placeholder="Banyan email"
-                  name="banyanemail"
+                  name="banyanEmail"
                   onChange={handleChange}
                   required
                 />
                 {/* need to make a select with options to click */}
-                <label htmlFor="case" className="form-label">
+                <label htmlFor="caseManager" className="form-label">
                   Case Manager:
                 </label>
-                <input
-                  id="case"
-                  type="text"
-                  className="form-control"
-                  placeholder="Case Manager Name"
-                  name="case"
+                <select
+                  id="caseManager"
+                  className="form-select"
+                  name="caseManager"
+                  defaultValue={"DEFAULT"}
                   onChange={handleChange}
                   required
-                />
+                >
+                  <option disabled value={"DEFAULT"}>
+                    --Case Manager--
+                  </option>
+                  {ModalCaseMan.map((caseMan, index) => (
+                    <option key={index} value={caseMan} name={caseMan}>
+                      {caseMan}
+                    </option>
+                  ))}
+                </select>
                 <label htmlFor="tes" className="form-label">
                   TES:
                 </label>
-                {/* <input
-                  id="tes"
-                  type="text"
-                  className="form-control"
-                  placeholder="TES Name"
+                <select
+                  className="form-select"
+                  defaultValue={"DEFAULT"}
                   name="tes"
                   onChange={handleChange}
-                  required
-                /> */}
-                <select className="form-select" defaultValue={"DEFAULT"}>
-                  <option name="tes" disabled value={"DEFAULT"}>
+                >
+                  <option disabled value={"DEFAULT"}>
                     --Technical Employment Specialist--
                   </option>
                   {ModalTes.map((tes, index) => (
@@ -292,15 +312,16 @@ const Modal = () => {
                     </option>
                   ))}
                 </select>
-                <label htmlFor="workbuddy" className="form-label">
+                <label htmlFor="workBuddy" className="form-label">
                   Work Buddy:
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="workbuddy"
+                  id="workBuddy"
                   placeholder="Work Buddy Name"
-                  name="workbuddy"
+                  name="workBuddy"
+                  onChange={handleChange}
                   required
                 />
                 {/* rubric link goes where?*/}
